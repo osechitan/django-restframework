@@ -1,10 +1,12 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 from rest_framework import routers
-from .views import NovelViewSet
 
-app_name = 'NovelHub'
-
+app_name = 'NovelEditor'
 
 router = routers.DefaultRouter()
-router.register(r'novel', NovelViewSet)
+router.register('novel', views.NovelViewSet)
+
+urlpatterns = [
+    path('', include(router.urls)),
+]
